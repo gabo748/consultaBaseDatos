@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class BaseDeDatos (context: Context): SQLiteOpenHelper(context, NOMBRE_BD, null, BD_VERSION) {
     companion object {
@@ -26,13 +27,13 @@ class BaseDeDatos (context: Context): SQLiteOpenHelper(context, NOMBRE_BD, null,
     }
 
     fun insertarMensaje(registro: Registro) {
-        val base_de_datos = writableDatabase
+        val baseDeDatos =  writableDatabase
         val valores = ContentValues().apply {
             put(MENSAJE, registro.mensaje)
         }
 
-        base_de_datos.insert(NOMBRE_BD, null, valores)
-        base_de_datos.close()
+        baseDeDatos.insert(NOMBRE_TABLA, null, valores)
+        baseDeDatos.close()
     }
 
 
